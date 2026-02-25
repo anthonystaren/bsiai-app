@@ -256,8 +256,7 @@ section { padding:6rem 3rem; }
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+
 
 <!-- NAV -->
 <nav>
@@ -689,21 +688,17 @@ section { padding:6rem 3rem; }
     <p class="section-sub reveal">Let's discuss how I'll turn BSI's AI Business Unit into the definitive compliance partner for organizations navigating the EU AI Act.</p>
     <div class="contact-links reveal">
       <a href="https://bsiai.app" target="_blank" class="link-pill">↗ bsiai.app</a>
-      <a href="mailto:tony@bsiai.app" class="link-pill">✉ tony@bsiai.app</a>
+      <a href="/cdn-cgi/l/email-protection#fd89929384bd9f8e949c94d39c8d8d" class="link-pill">✉ <span class="__cf_email__" data-cfemail="384c575641785a4b51595116594848">[email&#160;protected]</span></a>
       <a href="https://linkedin.com/in/tonyaestar" target="_blank" class="link-pill">in LinkedIn</a>
     </div>
     <p class="footnote">bsiai.app · Built to demonstrate initiative, technical fluency, and market vision for the BSI AI Business Unit</p>
   </div>
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Cursor disabled
-document.getElementById('cursor').style.display='none'; document.getElementById('cursorRing').style.display='none'; const cursor = {style:{left:0,top:0,transform:''}}; const ring = {style:{left:0,top:0}};
-const ring = document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-
-
-document.querySelectorAll('a,button,select,input').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.style.transform='translate(-50%,-50%) scale(2.5)');el.addEventListener('mouseleave',()=>cursor.style.transform='translate(-50%,-50%) scale(1)');});
+if(document.getElementById('cursor')) document.getElementById('cursor').style.display='none';
+if(document.getElementById('cursorRing')) document.getElementById('cursorRing').style.display='none';
 
 // Scroll reveal
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
@@ -798,13 +793,4 @@ function renderReg(filter){
 }
 
 function filterReg(cat,btn){
-  document.querySelectorAll('#registry .filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  renderReg(cat);
-}
-
-renderReg('all');
-
-// Case Studies filter
-function filterCS(sector,btn){
-  document.querySelectorAll('#casestudies .filter-btn').forEach(b=
+  document.querySelectorAll('#registry .filter-btn').
