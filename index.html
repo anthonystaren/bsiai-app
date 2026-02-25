@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tony Aestar × BSI AI | Business Development Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #cc0000;
+  --dark: #0a0a0f;
+  --charcoal: #111118;
+  --card: #16161f;
+  --slate: #1c1c28;
+  --border: rgba(255,255,255,0.07);
+  --muted: rgba(255,255,255,0.42);
+  --text: rgba(255,255,255,0.88);
+  --gold: #d4a843;
+  --blue: #3b82f6;
+  --green: #10b981;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'DM Sans',sans-serif; background:var(--dark); color:var(--text); overflow-x:hidden; cursor:none; }
+
+/* Cursor */
+.cursor { position:fixed; width:10px; height:10px; background:var(--red); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform 0.15s; }
+.cursor-ring { position:fixed; width:34px; height:34px; border:1px solid rgba(204,0,0,0.35); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); }
+
+/* Nav */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:1.1rem 3rem; display:flex; justify-content:space-between; align-items:center; background:rgba(10,10,15,0.88); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+.nav-logo { font-family:'DM Mono',monospace; font-size:0.75rem; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--text); }
+.nav-cta { color:var(--red)!important; border:1px solid var(--red); padding:0.4rem 1rem; border-radius:2px; transition:background 0.2s!important; }
+.nav-cta:hover { background:var(--red)!important; color:white!important; }
+
+/* Sections */
+section { padding:6rem 3rem; }
+.container { max-width:1200px; margin:0 auto; }
+.section-label { font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--red); margin-bottom:0.9rem; }
+.section-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,3.8vw,3.4rem); font-weight:700; line-height:1.1; margin-bottom:0.9rem; }
+.section-sub { font-size:0.95rem; color:var(--muted); max-width:580px; line-height:1.75; font-weight:300; margin-bottom:3.5rem; }
+
+/* Buttons */
+.btn-primary { display:inline-flex; align-items:center; gap:0.5rem; background:var(--red); color:white; padding:0.85rem 2rem; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; border:none; cursor:none; transition:box-shadow 0.2s,transform 0.2s; }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(204,0,0,0.35); }
+.btn-ghost { display:inline-flex; align-items:center; gap:0.5rem; background:transparent; color:var(--text); padding:0.85rem 2rem; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; border:1px solid var(--border); cursor:none; transition:border-color 0.2s; }
+.btn-ghost:hover { border-color:rgba(255,255,255,0.3); }
+
+/* Filter buttons */
+.filter-btn { font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; background:transparent; border:1px solid var(--border); color:var(--muted); cursor:none; transition:all 0.2s; border-radius:2px; }
+.filter-btn:hover,.filter-btn.active { background:rgba(204,0,0,0.1); border-color:rgba(204,0,0,0.4); color:white; }
+.filter-row { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+
+/* Reveal */
+.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--dark); }
+::-webkit-scrollbar-thumb { background:var(--red); border-radius:2px; }
+
+/* ===== HERO ===== */
+.hero { min-height:100vh; display:flex; align-items:center; position:relative; overflow:hidden; padding:8rem 3rem 4rem; }
+.hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(204,0,0,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(204,0,0,0.035) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse at center,black 20%,transparent 80%); }
+.hero-glow { position:absolute; top:-20%; right:-5%; width:650px; height:650px; background:radial-gradient(ellipse,rgba(204,0,0,0.1) 0%,transparent 70%); pointer-events:none; }
+.hero-content { max-width:1200px; margin:0 auto; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; position:relative; z-index:1; }
+.hero-eyebrow { font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--red); margin-bottom:1.4rem; opacity:0; animation:fadeUp 0.8s ease 0.2s forwards; }
+.hero-title { font-family:'Playfair Display',serif; font-size:clamp(3rem,5vw,5.2rem); font-weight:900; line-height:1.0; margin-bottom:1.5rem; opacity:0; animation:fadeUp 0.8s ease 0.4s forwards; }
+.hero-title em { font-style:italic; color:var(--red); }
+.hero-subtitle { font-size:1rem; line-height:1.75; color:var(--muted); margin-bottom:2.5rem; font-weight:300; opacity:0; animation:fadeUp 0.8s ease 0.6s forwards; }
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:fadeUp 0.8s ease 0.8s forwards; }
+.hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; opacity:0; animation:fadeUp 0.8s ease 1s forwards; }
+.stat-card { background:var(--card); border:1px solid var(--border); padding:1.5rem; position:relative; overflow:hidden; }
+.stat-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--red); }
+.stat-number { font-family:'Playfair Display',serif; font-size:2.4rem; font-weight:700; color:white; line-height:1; margin-bottom:0.4rem; }
+.stat-label { font-size:0.76rem; color:var(--muted); line-height:1.4; }
+
+/* ===== WHY ME ===== */
+#why-me { background:var(--charcoal); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.pillars-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; background:var(--border); }
+.pillar { background:var(--card); padding:2.75rem 2.25rem; position:relative; overflow:hidden; transition:transform 0.3s; }
+.pillar:hover { transform:translateY(-4px); }
+.pillar-num { font-family:'Playfair Display',serif; font-size:5rem; font-weight:900; color:rgba(204,0,0,0.07); position:absolute; top:1rem; right:1.25rem; line-height:1; user-select:none; }
+.pillar-icon { width:42px; height:42px; background:rgba(204,0,0,0.1); border:1px solid rgba(204,0,0,0.2); display:flex; align-items:center; justify-content:center; margin-bottom:1.4rem; font-size:1.1rem; }
+.pillar h3 { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; margin-bottom:0.7rem; }
+.pillar p { font-size:0.87rem; color:var(--muted); line-height:1.75; margin-bottom:1.5rem; }
+.pillar-proof { list-style:none; display:flex; flex-direction:column; gap:0.45rem; }
+.pillar-proof li { font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--gold); padding-left:1rem; position:relative; letter-spacing:0.02em; }
+.pillar-proof li::before { content:'→'; position:absolute; left:0; }
+
+/* ===== 30/60/90 PLAN ===== */
+#plan { background:var(--dark); }
+.plan-tabs { display:flex; margin-bottom:3rem; border-bottom:1px solid var(--border); }
+.plan-tab { font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.9rem 2rem; background:none; border:none; color:var(--muted); cursor:none; position:relative; transition:color 0.2s; }
+.plan-tab.active { color:white; }
+.plan-tab.active::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:2px; background:var(--red); }
+.plan-tab:hover { color:var(--text); }
+.plan-panel { display:none; animation:fadeUp 0.4s ease forwards; }
+.plan-panel.active { display:grid; grid-template-columns:1fr 2fr; gap:4rem; align-items:start; }
+.plan-phase-info h2 { font-family:'Playfair Display',serif; font-size:2.5rem; font-weight:900; margin-bottom:0.4rem; }
+.phase-period { font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; margin-bottom:1.4rem; }
+.plan-phase-info p { font-size:0.9rem; color:var(--muted); line-height:1.75; }
+.plan-milestones { display:flex; flex-direction:column; gap:1px; background:var(--border); }
+.milestone { background:var(--card); padding:1.4rem 2rem; display:grid; grid-template-columns:auto 1fr auto; gap:1.5rem; align-items:center; transition:background 0.15s; }
+.milestone:hover { background:var(--slate); }
+.milestone-week { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.1em; color:var(--muted); text-transform:uppercase; white-space:nowrap; }
+.milestone-text strong { display:block; font-weight:600; font-size:0.9rem; margin-bottom:0.2rem; }
+.milestone-text span { font-size:0.78rem; color:var(--muted); }
+.milestone-tag { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.07em; padding:0.22rem 0.6rem; border-radius:2px; white-space:nowrap; }
+.tag-learn { background:rgba(59,130,246,0.15); color:#60a5fa; }
+.tag-build { background:rgba(212,168,67,0.15); color:var(--gold); }
+.tag-close { background:rgba(16,185,129,0.15); color:var(--green); }
+.tag-kpi { background:rgba(204,0,0,0.15); color:#f87171; }
+
+/* ===== CALCULATOR ===== */
+#calculator { background:var(--charcoal); border-top:1px solid var(--border); }
+.calc-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+.calc-form { display:flex; flex-direction:column; gap:1.4rem; }
+.form-group { display:flex; flex-direction:column; gap:0.45rem; }
+.form-label { font-family:'DM Mono',monospace; font-size:0.67rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); }
+.form-select { background:var(--card); border:1px solid var(--border); color:var(--text); padding:0.8rem 1rem; font-family:'DM Sans',sans-serif; font-size:0.88rem; appearance:none; outline:none; cursor:none; transition:border-color 0.2s; border-radius:2px; }
+.form-select:focus { border-color:rgba(204,0,0,0.5); }
+.form-range { background:transparent; border:none; cursor:none; accent-color:var(--red); width:100%; }
+.range-display { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:white; }
+.range-sub { font-size:0.75rem; color:var(--muted); margin-top:0.2rem; }
+.calc-btn { background:var(--red); color:white; padding:0.95rem 2rem; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; border:none; cursor:none; transition:box-shadow 0.2s,transform 0.2s; margin-top:0.5rem; }
+.calc-btn:hover { box-shadow:0 8px 30px rgba(204,0,0,0.4); transform:translateY(-1px); }
+.calc-results { background:var(--card); border:1px solid var(--border); padding:2.5rem; min-height:380px; }
+.results-title { font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:2rem; padding-bottom:1rem; border-bottom:1px solid var(--border); }
+.risk-score { text-align:center; margin-bottom:2rem; }
+.risk-score-num { font-family:'Playfair Display',serif; font-size:5rem; font-weight:900; line-height:1; }
+.risk-score-label { font-family:'DM Mono',monospace; font-size:0.67rem; letter-spacing:0.15em; text-transform:uppercase; margin-top:0.4rem; }
+.risk-bar { width:100%; height:5px; background:rgba(255,255,255,0.07); border-radius:3px; overflow:hidden; margin:1.25rem 0; }
+.risk-bar-fill { height:100%; border-radius:3px; transition:width 1s ease; }
+.risk-metrics { display:flex; flex-direction:column; gap:0; }
+.metric-row { display:flex; justify-content:space-between; align-items:center; padding:0.7rem 0; border-bottom:1px solid var(--border); font-size:0.85rem; }
+.metric-row:last-child { border-bottom:none; }
+.metric-row .label { color:var(--muted); }
+.metric-row .value { font-weight:600; }
+.metric-row .danger { color:#f87171; }
+.metric-row .safe { color:var(--green); }
+.results-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; height:300px; text-align:center; gap:1rem; }
+.results-placeholder svg { opacity:0.15; }
+.results-placeholder p { font-size:0.85rem; color:var(--muted); }
+
+/* ===== AI TOOL REGISTRY ===== */
+#registry { background:var(--dark); border-top:1px solid var(--border); }
+.registry-table-wrap { overflow-x:auto; }
+.registry-table { width:100%; border-collapse:collapse; font-size:0.83rem; }
+.registry-table thead tr { border-bottom:2px solid var(--border); }
+.registry-table th { font-family:'DM Mono',monospace; font-size:0.59rem; letter-spacing:0.17em; text-transform:uppercase; color:var(--muted); padding:0 1.5rem 0.9rem 0; text-align:left; white-space:nowrap; }
+.registry-table tbody tr { border-bottom:1px solid var(--border); transition:background 0.15s; }
+.registry-table tbody tr:hover { background:rgba(255,255,255,0.02); }
+.registry-table td { padding:1.1rem 1.5rem 1.1rem 0; vertical-align:middle; }
+.tool-name { font-weight:600; color:white; margin-bottom:0.2rem; font-size:0.88rem; }
+.tool-vendor { font-size:0.7rem; color:var(--muted); }
+.tool-cat { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.07em; padding:0.22rem 0.65rem; border-radius:2px; white-space:nowrap; }
+.cat-llm { background:rgba(139,92,246,0.15); color:#a78bfa; }
+.cat-vision { background:rgba(59,130,246,0.15); color:#60a5fa; }
+.cat-decision { background:rgba(245,158,11,0.15); color:#fbbf24; }
+.cat-bio { background:rgba(16,185,129,0.15); color:#34d399; }
+.cat-hr { background:rgba(236,72,153,0.15); color:#f472b6; }
+.cat-auto { background:rgba(249,115,22,0.15); color:#fb923c; }
+.cat-code { background:rgba(20,184,166,0.15); color:#2dd4bf; }
+.risk-badge { display:inline-flex; align-items:center; gap:0.4rem; font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.06em; font-weight:500; padding:0.28rem 0.7rem; border-radius:2px; white-space:nowrap; }
+.risk-prohibited { background:rgba(239,68,68,0.18); color:#f87171; border:1px solid rgba(239,68,68,0.28); }
+.risk-high { background:rgba(249,115,22,0.16); color:#fb923c; border:1px solid rgba(249,115,22,0.28); }
+.risk-medium { background:rgba(234,179,8,0.13); color:#fbbf24; border:1px solid rgba(234,179,8,0.22); }
+.risk-low { background:rgba(16,185,129,0.1); color:#34d399; border:1px solid rgba(16,185,129,0.22); }
+.risk-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; }
+.risk-prohibited .risk-dot { background:#f87171; }
+.risk-high .risk-dot { background:#fb923c; }
+.risk-medium .risk-dot { background:#fbbf24; }
+.risk-low .risk-dot { background:#34d399; }
+.score-wrap { display:flex; align-items:center; gap:0.7rem; min-width:130px; }
+.score-bar-bg { flex:1; height:3px; background:rgba(255,255,255,0.07); border-radius:2px; overflow:hidden; }
+.score-bar-fill { height:100%; border-radius:2px; }
+.score-num { font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--muted); min-width:24px; text-align:right; }
+.bsi-flag { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.06em; padding:0.2rem 0.55rem; border-radius:2px; white-space:nowrap; }
+.flag-halt { background:rgba(239,68,68,0.15); color:#f87171; }
+.flag-cert { background:rgba(204,0,0,0.13); color:#f87171; }
+.flag-assess { background:rgba(212,168,67,0.12); color:var(--gold); }
+.flag-monitor { background:rgba(255,255,255,0.05); color:var(--muted); }
+.reg-notes { font-size:0.76rem; color:rgba(255,255,255,0.4); max-width:300px; line-height:1.5; }
+.registry-legend { display:flex; gap:2rem; flex-wrap:wrap; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border); }
+.legend-item { display:flex; align-items:center; gap:0.55rem; font-size:0.75rem; color:var(--muted); }
+.legend-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+
+/* ===== CASE STUDIES ===== */
+#casestudies { background:var(--charcoal); border-top:1px solid var(--border); }
+.cs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; background:var(--border); }
+.cs-card { background:var(--card); padding:2.25rem 2rem; display:flex; flex-direction:column; cursor:none; transition:background 0.2s; position:relative; overflow:hidden; }
+.cs-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--red); transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+.cs-card:hover { background:var(--slate); }
+.cs-card:hover::after { transform:scaleX(1); }
+.cs-featured { grid-column:span 2; }
+.cs-sector { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1.1rem; display:inline-block; }
+.cs-company { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:white; margin-bottom:0.25rem; }
+.cs-initiative { font-size:0.78rem; color:var(--muted); margin-bottom:1.4rem; font-style:italic; }
+.cs-divider { width:30px; height:1px; background:rgba(204,0,0,0.5); margin-bottom:1.4rem; }
+.cs-body { font-size:0.85rem; color:rgba(255,255,255,0.68); line-height:1.75; margin-bottom:1.5rem; flex:1; }
+.cs-featured .cs-body { font-size:0.9rem; }
+.cs-outcomes { display:flex; flex-direction:column; gap:0.55rem; margin-bottom:1.5rem; }
+.cs-outcome { display:flex; align-items:flex-start; gap:0.55rem; font-size:0.77rem; line-height:1.4; }
+.cs-outcome .ico { color:var(--green); font-size:0.68rem; margin-top:0.15rem; flex-shrink:0; }
+.cs-outcome .txt { color:rgba(255,255,255,0.72); }
+.cs-footer { display:flex; justify-content:space-between; align-items:center; padding-top:1.1rem; border-top:1px solid var(--border); }
+.cs-standard { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.08em; color:var(--red); text-transform:uppercase; }
+.cs-result { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.06em; padding:0.25rem 0.65rem; background:rgba(16,185,129,0.1); color:var(--green); border:1px solid rgba(16,185,129,0.2); border-radius:2px; }
+.cs-insight-bar { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; background:var(--border); margin-top:3rem; }
+.insight-item { background:var(--card); padding:1.75rem 2rem; }
+.insight-stat { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; color:white; margin-bottom:0.35rem; }
+.insight-label { font-size:0.78rem; color:var(--muted); line-height:1.5; }
+
+/* ===== CREDENTIALS ===== */
+#credentials { border-top:1px solid var(--border); }
+.creds-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5px; background:var(--border); margin-top:3rem; }
+.cred-card { background:var(--card); padding:2rem 1.5rem; text-align:center; }
+.cred-emoji { font-size:2rem; margin-bottom:1rem; }
+.cred-card h4 { font-family:'Playfair Display',serif; font-size:1rem; margin-bottom:0.5rem; font-weight:700; }
+.cred-card p { font-size:0.77rem; color:var(--muted); line-height:1.5; }
+.timeline-strip { display:grid; grid-template-columns:repeat(5,1fr); gap:0; background:var(--border); margin-top:1.5px; }
+.timeline-item { background:var(--card); padding:1.5rem 1.5rem; }
+.timeline-year { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; color:var(--red); margin-bottom:0.4rem; }
+.timeline-role { font-weight:600; font-size:0.82rem; margin-bottom:0.2rem; }
+.timeline-org { font-size:0.73rem; color:var(--muted); }
+
+/* ===== CONTACT ===== */
+#contact { background:linear-gradient(135deg,#0a0a0f 0%,#1a0505 50%,#0a0a0f 100%); border-top:1px solid var(--border); text-align:center; padding:8rem 3rem; }
+#contact .section-title { max-width:700px; margin:0 auto 1.4rem; }
+#contact .section-sub { margin:0 auto 3rem; max-width:500px; }
+.contact-links { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.link-pill { display:inline-flex; align-items:center; gap:0.5rem; padding:0.55rem 1.3rem; border:1px solid var(--border); font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-decoration:none; color:var(--muted); transition:border-color 0.2s,color 0.2s; }
+.link-pill:hover { border-color:rgba(255,255,255,0.3); color:white; }
+.footnote { margin-top:4rem; font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; color:rgba(255,255,255,0.18); text-transform:uppercase; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+@media(max-width:900px) {
+  nav{padding:1rem 1.5rem} .nav-links{display:none}
+  .hero-content,.calc-grid,.plan-panel.active{grid-template-columns:1fr;gap:3rem}
+  .pillars-grid,.creds-grid,.cs-grid{grid-template-columns:1fr}
+  .cs-featured{grid-column:span 1}
+  section{padding:4rem 1.5rem}
+  .timeline-strip{grid-template-columns:1fr 1fr}
+  .cs-insight-bar{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">BSI.AI × Tony Aestar</div>
+  <ul class="nav-links">
+    <li><a href="#why-me">Why Me</a></li>
+    <li><a href="#plan">30/60/90</a></li>
+    <li><a href="#calculator">Risk Tool</a></li>
+    <li><a href="#registry">Tool Registry</a></li>
+    <li><a href="#casestudies">Case Studies</a></li>
+    <li><a href="#credentials">Background</a></li>
+    <li><a href="#contact" class="nav-cta">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div>
+      <p class="hero-eyebrow">Business Development Manager — AI Unit · BSI</p>
+      <h1 class="hero-title">The <em>Founder</em><br>Who Speaks<br>Compliance.</h1>
+      <p class="hero-subtitle">I've built AI-adjacent platforms from 0 to 1, sold complex solutions to C-suite executives, and operated in the most regulated verticals on Earth. BSI's newly launched AI Business Unit isn't looking for a salesperson. It's looking for a market architect.</p>
+      <div class="hero-actions">
+        <a href="#plan" class="btn-primary">View 30/60/90 Plan →</a>
+        <a href="#calculator" class="btn-ghost">Try AI Risk Tool</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="stat-number">$8M+</div><div class="stat-label">Closed business at Clarivate — Winner's Circle, top 3% globally</div></div>
+      <div class="stat-card"><div class="stat-number">$3.5M</div><div class="stat-label">New business generated at The Economist Group</div></div>
+      <div class="stat-card"><div class="stat-number">9+ yrs</div><div class="stat-label">B2B consultative sales in healthcare & technology</div></div>
+      <div class="stat-card"><div class="stat-number">2</div><div class="stat-label">Ventures founded in regulated markets: Aestar Therapeutics & Profacio</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section id="why-me">
+  <div class="container">
+    <p class="section-label reveal">Why I'm Suited for This Role</p>
+    <h2 class="section-title reveal">Three pillars. One<br><em>unfair advantage.</em></h2>
+    <p class="section-sub reveal">BSI's AI Business Unit is a startup within a century-old institution. That requires someone who understands both worlds — the urgency of innovation and the gravity of compliance.</p>
+    <div class="pillars-grid reveal">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-icon">🚀</div>
+        <h3>New Market Architect</h3>
+        <p>BSI's AI BU is a blank canvas. You need someone who doesn't need a playbook — someone who writes one. I've built territory from zero across multiple verticals, carrying quotas into markets that didn't yet understand why they needed the solution.</p>
+        <ul class="pillar-proof">
+          <li>$8M+ pipeline at Clarivate — top 3% globally, Winner's Circle</li>
+          <li>Founded Aestar Therapeutics & Profacio in highly regulated markets</li>
+          <li>Proven track record taking new products into new markets</li>
+          <li>Not a quota hitter — a quota architect</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-icon">🧠</div>
+        <h3>Technical AI Fluency</h3>
+        <p>I don't just sell AI — I've built with it. From deploying agentic platforms to developing AI-adjacent biotech pipelines, I speak the language of the CTOs and compliance officers I'll be selling to. I can explain ISO/IEC 42001 to a boardroom and a dev team in the same afternoon.</p>
+        <ul class="pillar-proof">
+          <li>Built landmarq.ai — AI governance mapping platform</li>
+          <li>Built aestartx.com — regulatory-grade biotech AI platform</li>
+          <li>Deep knowledge of EU AI Act risk tiers & ISO 42001, 42006</li>
+          <li>Fluent in NIST AI RMF, GDPR, and DORA AI obligations</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-icon">⚖️</div>
+        <h3>Regulatory & Consultative Rigor</h3>
+        <p>My background spans pharmaceuticals, economics, and enterprise data — all industries where a single compliance failure has board-level consequences. This context is rare in a BD profile and directly mirrors the risk calculus BSI's clients face under the EU AI Act.</p>
+        <ul class="pillar-proof">
+          <li>CEO of Aestar Therapeutics — pre-IND, FDA-pathway drug development</li>
+          <li>Ernst & Young consulting — enterprise-grade process discipline</li>
+          <li>BA Economics with Highest Honors, UIUC</li>
+          <li>Sold to CISOs, CTOs, and GCs in heavily regulated environments</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30/60/90 PLAN -->
+<section id="plan">
+  <div class="container">
+    <p class="section-label reveal">Strategic Roadmap</p>
+    <h2 class="section-title reveal">My 30/60/90 Day Plan</h2>
+    <p class="section-sub reveal">A phased approach to building BSI's AI BU into the definitive compliance partner for biometrics, manufacturing, and beyond — with clear milestones and measurable KPIs at every phase.</p>
+    <div class="plan-tabs reveal">
+      <button class="plan-tab active" onclick="switchTab(0)">Days 1–30: Learn</button>
+      <button class="plan-tab" onclick="switchTab(1)">Days 31–60: Build</button>
+      <button class="plan-tab" onclick="switchTab(2)">Days 61–90: Win</button>
+    </div>
+    <div class="plan-panel active" id="panel-0">
+      <div class="plan-phase-info">
+        <h2>Learn.</h2>
+        <div class="phase-period">Days 1 – 30 · Immersion</div>
+        <p>The fastest path to revenue is a deep understanding of the product, the buyer, and the battlefield. Month one is about becoming the internal authority on BSI's AI portfolio and the EU AI Act landscape — before a single cold call is made.</p>
+      </div>
+      <div class="plan-milestones">
+        <div class="milestone"><span class="milestone-week">Wk 1</span><div class="milestone-text"><strong>Regulatory Deep Dive</strong><span>Master ISO/IEC 42001, 42006, EU AI Act risk tiers, NIST AI RMF. Position myself as the internal SME from day one.</span></div><span class="milestone-tag tag-learn">LEARN</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 1–2</span><div class="milestone-text"><strong>Full Portfolio Mastery</strong><span>Audit all BSI AI services: conformity testing, training, gap assessments. Map each offering to specific EU AI Act obligations by sector.</span></div><span class="milestone-tag tag-learn">LEARN</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 2</span><div class="milestone-text"><strong>Internal Stakeholder Network</strong><span>Meet marketing, technical, regulatory, and existing account teams. Understand ideal customer profile, active pipeline, and key blockers.</span></div><span class="milestone-tag tag-learn">LEARN</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 3</span><div class="milestone-text"><strong>CRM Audit & Territory Mapping</strong><span>Identify dormant accounts and low-hanging fruit in biometrics and manufacturing. Build initial target account list of 50 qualified organizations.</span></div><span class="milestone-tag tag-build">BUILD</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 4</span><div class="milestone-text"><strong>Competitive Intelligence Report</strong><span>Map BSI's differentiation vs. SGS, Bureau Veritas, LRQA in AI certification. Deliver findings and go-to-market positioning memo to leadership.</span></div><span class="milestone-tag tag-build">BUILD</span></div>
+      </div>
+    </div>
+    <div class="plan-panel" id="panel-1">
+      <div class="plan-phase-info">
+        <h2>Build.</h2>
+        <div class="phase-period">Days 31 – 60 · Engagement</div>
+        <p>Armed with product knowledge and a target list, month two shifts from observation to execution — launching campaigns, booking discovery calls, and building a qualified pipeline with clear close timelines.</p>
+      </div>
+      <div class="plan-milestones">
+        <div class="milestone"><span class="milestone-week">Wk 5–6</span><div class="milestone-text"><strong>EU AI Act "Burning Platform" Campaign</strong><span>Launch targeted outreach to biometrics and manufacturing CISOs/CTOs on enforcement timelines. 50+ personalized, research-backed touchpoints.</span></div><span class="milestone-tag tag-build">BUILD</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 6</span><div class="milestone-text"><strong>10 Qualified Discovery Calls</strong><span>Convert warm contacts and dormant BSI accounts to active discovery. Qualify each opportunity against budget, authority, need, and timeline.</span></div><span class="milestone-tag tag-build">BUILD</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 7</span><div class="milestone-text"><strong>Webinar: "Preparing for EU AI Act Audits"</strong><span>Host a BSI-branded thought leadership session for regional clients and prospects. Drive inbound leads and establish brand authority in AI governance.</span></div><span class="milestone-tag tag-build">BUILD</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 7–8</span><div class="milestone-text"><strong>KPI: 5 Active Opportunities in Pipeline</strong><span>Move from awareness to intent. Five accounts with confirmed budget conversations and formal BSI proposals in active motion.</span></div><span class="milestone-tag tag-kpi">KPI</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 8</span><div class="milestone-text"><strong>Objection Library & Sales Playbook Draft</strong><span>Document top market objections — "standards can't keep up with AI" — and draft response frameworks. Share with the wider AI BU team.</span></div><span class="milestone-tag tag-build">BUILD</span></div>
+      </div>
+    </div>
+    <div class="plan-panel" id="panel-2">
+      <div class="plan-phase-info">
+        <h2>Win.</h2>
+        <div class="phase-period">Days 61 – 90 · Results</div>
+        <p>Month three is about closing, scaling, and proving the model. First contracts move to signature. Ecosystem partnerships create referral channels. And a long-term territory strategy sets the foundation for Year 1 quota achievement.</p>
+      </div>
+      <div class="plan-milestones">
+        <div class="milestone"><span class="milestone-week">Wk 9–10</span><div class="milestone-text"><strong>First Contract Closings</strong><span>Target 2 AI conformity testing or training engagements in final negotiation. Prioritize biometrics and manufacturing accounts with imminent EU AI Act exposure.</span></div><span class="milestone-tag tag-close">CLOSE</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 10</span><div class="milestone-text"><strong>Ecosystem Partner Mapping</strong><span>Identify 3–5 AI consulting and implementation firms (Deloitte AI, McKinsey Digital, boutique MLOps firms) for referral and co-sell arrangements.</span></div><span class="milestone-tag tag-build">BUILD</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 11</span><div class="milestone-text"><strong>Q1 Pipeline Review & KPI Report</strong><span>Present pipeline health, conversion rates, and market intelligence to AI BU leadership. Identify what's working and what needs adjustment for Q2.</span></div><span class="milestone-tag tag-kpi">KPI</span></div>
+        <div class="milestone"><span class="milestone-week">Wk 11–12</span><div class="milestone-text"><strong>Year 1 Territory Strategy</strong><span>Deliver a full territory plan including new vertical expansion (healthcare AI, autonomous systems) and multi-year revenue forecast model.</span></div><span class="milestone-tag tag-close">STRATEGY</span></div>
+        <div class="milestone"><span class="milestone-week">Day 90</span><div class="milestone-text"><strong>Fully Autonomous & Integrated</strong><span>Operating as a high-performing BDM with 15+ active pipeline accounts, 2+ closed contracts, and a referral ecosystem in motion.</span></div><span class="milestone-tag tag-close">CLOSE</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator">
+  <div class="container">
+    <p class="section-label reveal">Client Value Tool</p>
+    <h2 class="section-title reveal">AI Compliance<br>Risk & ROI Calculator</h2>
+    <p class="section-sub reveal">Estimate your organization's EU AI Act exposure and the long-term ROI of proactive ISO/IEC 42001 certification. This is the tool I'll put in front of every prospect.</p>
+    <div class="calc-grid reveal">
+      <div class="calc-form">
+        <div class="form-group">
+          <label class="form-label">Industry Sector</label>
+          <select class="form-select" id="industry">
+            <option value="">Select your industry...</option>
+            <option value="biometrics">Biometrics / Facial Recognition</option>
+            <option value="manufacturing">Industrial Manufacturing</option>
+            <option value="healthcare">Healthcare & MedTech</option>
+            <option value="finance">Financial Services</option>
+            <option value="hr">HR & Recruitment AI</option>
+            <option value="autonomous">Autonomous Vehicles / Robotics</option>
+            <option value="retail">Retail & E-Commerce</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Primary AI Use Case</label>
+          <select class="form-select" id="usecase">
+            <option value="">Select use case...</option>
+            <option value="decision">Automated Decision Making</option>
+            <option value="monitoring">Employee / Customer Monitoring</option>
+            <option value="prediction">Predictive Analytics</option>
+            <option value="generation">Generative AI / LLMs</option>
+            <option value="safety">Safety-Critical Systems</option>
+            <option value="compliance">Compliance Automation</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Annual Global Revenue</label>
+          <div class="range-display" id="revenueDisplay">$250M</div>
+          <div class="range-sub">Used to calculate maximum fine exposure</div>
+          <input type="range" class="form-range" id="revenue" min="10" max="10000" value="250" step="10" oninput="updateRevDisplay(this.value)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Current AI Governance Maturity</label>
+          <select class="form-select" id="maturity">
+            <option value="">Select maturity level...</option>
+            <option value="none">None — no formal AI governance</option>
+            <option value="partial">Partial — ad-hoc policies, not documented</option>
+            <option value="developing">Developing — policies exist, not certified</option>
+            <option value="advanced">Advanced — near-compliant, seeking certification</option>
+          </select>
+        </div>
+        <button class="calc-btn" onclick="calculateRisk()">Calculate My AI Risk Exposure →</button>
+      </div>
+      <div class="calc-results" id="resultsPanel">
+        <div class="results-placeholder" id="placeholder">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" stroke="white" stroke-width="1.5"/><path d="M28 18v12l7 3.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p>Complete the form to generate your<br>AI compliance risk assessment.</p>
+        </div>
+        <div id="resultsContent" style="display:none">
+          <div class="results-title">AI COMPLIANCE RISK ASSESSMENT</div>
+          <div class="risk-score">
+            <div class="risk-score-num" id="riskNum">—</div>
+            <div class="risk-score-label" id="riskLabel" style="color:var(--muted)">Risk Score</div>
+          </div>
+          <div class="risk-bar"><div class="risk-bar-fill" id="riskBarFill" style="width:0%"></div></div>
+          <div class="risk-metrics">
+            <div class="metric-row"><span class="label">EU AI Act Classification</span><span class="value" id="mClass">—</span></div>
+            <div class="metric-row"><span class="label">Maximum Fine Exposure</span><span class="value danger" id="mFine">—</span></div>
+            <div class="metric-row"><span class="label">Estimated Remediation Cost</span><span class="value danger" id="mRemediation">—</span></div>
+            <div class="metric-row"><span class="label">BSI Certification Est. Cost</span><span class="value safe" id="mCert">—</span></div>
+            <div class="metric-row"><span class="label">10-Year Compliance ROI</span><span class="value safe" id="mROI">—</span></div>
+            <div class="metric-row"><span class="label">Recommended Action</span><span class="value" id="mAction" style="color:var(--gold)">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI TOOL RISK REGISTRY -->
+<section id="registry">
+  <div class="container">
+    <p class="section-label reveal">AI Tool Risk Registry</p>
+    <h2 class="section-title reveal">Know what you're<br><em>deploying.</em></h2>
+    <p class="section-sub reveal">A comprehensive risk rating of widely deployed AI tools, categorized by EU AI Act risk tier, compliance posture, and BSI recommended action. Use this to start the compliance conversation with any client.</p>
+
+    <div class="filter-row reveal">
+      <button class="filter-btn active" onclick="filterReg('all',this)">All Tools</button>
+      <button class="filter-btn" onclick="filterReg('llm',this)">LLM / Generative</button>
+      <button class="filter-btn" onclick="filterReg('bio',this)">Biometrics</button>
+      <button class="filter-btn" onclick="filterReg('decision',this)">Decision AI</button>
+      <button class="filter-btn" onclick="filterReg('hr',this)">HR / Recruitment</button>
+      <button class="filter-btn" onclick="filterReg('auto',this)">Autonomous</button>
+      <button class="filter-btn" onclick="filterReg('code',this)">Code Generation</button>
+      <button class="filter-btn" onclick="filterReg('vision',this)">Computer Vision</button>
+    </div>
+
+    <div class="registry-table-wrap reveal">
+      <table class="registry-table">
+        <thead>
+          <tr>
+            <th style="min-width:190px">AI Tool / Vendor</th>
+            <th>Category</th>
+            <th>EU AI Act Tier</th>
+            <th style="min-width:160px">Risk Score</th>
+            <th style="min-width:280px">Key Risk Factors</th>
+            <th>BSI Recommendation</th>
+          </tr>
+        </thead>
+        <tbody id="registryBody"></tbody>
+      </table>
+    </div>
+
+    <div class="registry-legend reveal">
+      <div class="legend-item"><div class="legend-dot" style="background:#f87171"></div>Prohibited (Banned under EU AI Act)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#fb923c"></div>High Risk (Conformity assessment required before deployment)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#fbbf24"></div>Medium Risk (Transparency + gap assessment obligations)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#34d399"></div>Low Risk (Monitoring + data processing agreements)</div>
+      <div class="legend-item" style="margin-left:auto;font-size:0.68rem;font-style:italic">Risk ratings reflect EU AI Act exposure as of Feb 2026. Not legal advice.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="casestudies">
+  <div class="container">
+    <p class="section-label reveal">Responsible AI in Practice</p>
+    <h2 class="section-title reveal">Companies doing it <em>right.</em></h2>
+    <p class="section-sub reveal">Real-world examples of organizations that deployed AI responsibly — with measurable business outcomes. These are the narratives I'll bring to every client conversation to demonstrate what governance-first AI delivers.</p>
+
+    <div class="filter-row reveal">
+      <button class="filter-btn active" onclick="filterCS('all',this)">All Sectors</button>
+      <button class="filter-btn" onclick="filterCS('manufacturing',this)">Manufacturing</button>
+      <button class="filter-btn" onclick="filterCS('healthcare',this)">Healthcare</button>
+      <button class="filter-btn" onclick="filterCS('finance',this)">Financial Services</button>
+      <button class="filter-btn" onclick="filterCS('retail',this)">Retail / FMCG</button>
+      <button class="filter-btn" onclick="filterCS('logistics',this)">Logistics</button>
+    </div>
+
+    <div class="cs-grid reveal" id="csGrid">
+
+      <div class="cs-card cs-featured" data-sector="manufacturing">
+        <span class="cs-sector cat-decision">Manufacturing · ISO/IEC 42001 Pioneer</span>
+        <div class="cs-company">Siemens AG</div>
+        <div class="cs-initiative">"AI at Scale" — Industrial AI Governance Across 1,000+ Applications</div>
+        <div class="cs-divider"></div>
+        <div class="cs-body">Siemens deployed over 1,000 AI applications across its global manufacturing operations — one of the largest enterprise AI deployments in industrial history. Recognizing that scale without governance is liability, Siemens built a centralized AI Ethics Board and a proprietary AI Assessment Framework aligned with ISO/IEC 42001 requirements before the standard was finalized. Every AI application is classified by risk tier, audited quarterly, and subject to mandatory explainability requirements. Their predictive maintenance AI operates across 30+ factories with zero significant regulatory incidents since 2021.</div>
+        <div class="cs-outcomes">
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">30% reduction in unplanned downtime across monitored facilities via governance-compliant predictive AI</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">ISO/IEC 42001-aligned governance framework adopted as internal standard across all global business units</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Zero material EU AI Act enforcement actions — proactive risk register published externally as industry benchmark</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">AI Ethics Board structure cited by German Federal AI regulator as model for large enterprise governance</span></div>
+        </div>
+        <div class="cs-footer">
+          <span class="cs-standard">ISO/IEC 42001 · NIST AI RMF · EU AI Act Ready</span>
+          <span class="cs-result">€2.1B productivity attributed</span>
+        </div>
+      </div>
+
+      <div class="cs-card" data-sector="finance">
+        <span class="cs-sector cat-bio">Financial Services · Biometrics</span>
+        <div class="cs-company">Ping An Insurance</div>
+        <div class="cs-initiative">Responsible Biometric AI — Claims Verification at Scale</div>
+        <div class="cs-divider"></div>
+        <div class="cs-body">Ping An deployed biometric AI for claims verification across 220M+ customers — an inherently high-risk use case. They distinguished themselves by building an independent AI Ethics Committee, publishing a "Responsible AI Principles" framework, and commissioning third-party bias audits before any deployment. Their fairness testing protocol is now referenced by the China AI Standards Institute as an industry model.</div>
+        <div class="cs-outcomes">
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Fraud detection accuracy improved 40% with independently bias-tested biometric models</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Third-party audits confirmed less than 2% demographic performance gap — below industry benchmark</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Claims processing time reduced from 7 days to under 8 minutes for eligible claims</span></div>
+        </div>
+        <div class="cs-footer">
+          <span class="cs-standard">ISO/IEC 27001 · Responsible AI Framework</span>
+          <span class="cs-result">40% fraud improvement</span>
+        </div>
+      </div>
+
+      <div class="cs-card" data-sector="retail">
+        <span class="cs-sector cat-hr">Retail / FMCG · HR AI</span>
+        <div class="cs-company">Unilever</div>
+        <div class="cs-initiative">Ethical AI Hiring — Removing Bias, Proving Transparency</div>
+        <div class="cs-divider"></div>
+        <div class="cs-body">Unilever replaced CV screening with AI-powered game-based assessments and video interviews — but did so with full transparency. Candidates are informed the process uses AI, data retention is disclosed, and human recruiters review all AI recommendations before decisions are made. Annual demographic fairness audits produced measurably more diverse hiring outcomes than prior methods.</div>
+        <div class="cs-outcomes">
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">16% increase in diversity of new hires in the first two years post-deployment</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Candidate satisfaction scores rose — transparency about AI built trust, not resistance</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Time-to-hire reduced by 75% without sacrificing quality or fairness metrics</span></div>
+        </div>
+        <div class="cs-footer">
+          <span class="cs-standard">GDPR Art. 22 · Transparency-First Design</span>
+          <span class="cs-result">75% faster time-to-hire</span>
+        </div>
+      </div>
+
+      <div class="cs-card" data-sector="logistics">
+        <span class="cs-sector cat-auto">Logistics · Autonomous Systems</span>
+        <div class="cs-company">DHL Group</div>
+        <div class="cs-initiative">Smart Warehouse Robotics — Governed Autonomy at Scale</div>
+        <div class="cs-divider"></div>
+        <div class="cs-body">DHL deployed over 5,000 autonomous robots and AI-driven sortation systems across 350+ facilities globally. Their AI governance approach — developed in partnership with BSI — includes real-time safety monitoring, mandatory human-in-loop override capabilities, and a central AI incident log. Every autonomous system has a documented risk assessment aligned to EU Machinery Regulation and the EU AI Act.</div>
+        <div class="cs-outcomes">
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Zero reportable safety incidents involving autonomous systems in EU-regulated facilities (2022–2025)</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">25% improvement in sort accuracy with AI-guided systems vs. manual processes</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">EU AI Act readiness assessment completed 18 months before enforcement deadline</span></div>
+        </div>
+        <div class="cs-footer">
+          <span class="cs-standard">EU Machinery Reg · ISO 42001 · BSI Partnership</span>
+          <span class="cs-result">18mo compliance headstart</span>
+        </div>
+      </div>
+
+      <div class="cs-card" data-sector="healthcare">
+        <span class="cs-sector cat-decision">Healthcare · Medical AI</span>
+        <div class="cs-company">Mayo Clinic</div>
+        <div class="cs-initiative">AI-Assisted Diagnostics — Validated, Transparent, Governed</div>
+        <div class="cs-divider"></div>
+        <div class="cs-body">Mayo Clinic deployed AI diagnostic tools for cardiology and oncology imaging only after completing 36-month clinical validation studies per model. Every AI recommendation includes a confidence score and supporting evidence visible to the clinician. Patients are informed when AI is used in their care pathway, and all systems undergo annual third-party audits for demographic bias and performance drift.</div>
+        <div class="cs-outcomes">
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Cardiac AI detects atrial fibrillation 12 months earlier than traditional diagnosis methods</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">All deployed models cleared FDA 510(k) and align with EU MDR AI provisions</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Zero adverse outcomes linked to AI recommendations across 500K+ patient interactions</span></div>
+        </div>
+        <div class="cs-footer">
+          <span class="cs-standard">FDA 510(k) · EU MDR · ISO 13485</span>
+          <span class="cs-result">12mo earlier detection</span>
+        </div>
+      </div>
+
+      <div class="cs-card" data-sector="manufacturing">
+        <span class="cs-sector cat-vision">Manufacturing · Computer Vision</span>
+        <div class="cs-company">BMW Group</div>
+        <div class="cs-initiative">Compliant Visual AI Quality Inspection at Production Scale</div>
+        <div class="cs-divider"></div>
+        <div class="cs-body">BMW deployed AI-powered visual inspection analyzing 100M+ images annually to detect defects invisible to human inspectors. The system was developed with an AI Impact Assessment, comprehensive training data documentation, and a published explainability framework — all pre-aligned to ISO/IEC 42001. BMW became one of the first automotive manufacturers to voluntarily disclose its AI system inventory ahead of EU AI Act requirements.</div>
+        <div class="cs-outcomes">
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Defect detection improved to 99.98% — up from 94% with human-only inspection</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">Published AI System Inventory voluntarily — cited by EU Commission as industry best practice</span></div>
+          <div class="cs-outcome"><span class="ico">✓</span><span class="txt">€180M annual quality cost reduction attributed to AI inspection deployment</span></div>
+        </div>
+        <div class="cs-footer">
+          <span class="cs-standard">ISO/IEC 42001 Pre-Aligned · EU AI Act Ready</span>
+          <span class="cs-result">99.98% defect detection</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cs-insight-bar reveal">
+      <div class="insight-item">
+        <div class="insight-stat">3.5×</div>
+        <div class="insight-label">Higher ROI for organizations with formal AI governance vs. ad-hoc deployments (McKinsey, 2024)</div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-stat">74%</div>
+        <div class="insight-label">Of enterprises report AI governance as a "board-level priority" following EU AI Act enforcement timeline</div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-stat">15–25×</div>
+        <div class="insight-label">Higher remediation cost for reactive vs. proactive ISO/IEC 42001 certification (Gartner, 2024)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="container">
+    <p class="section-label reveal">Background</p>
+    <h2 class="section-title reveal">A career built for<br>this exact moment.</h2>
+    <p class="section-sub reveal">The convergence of AI, regulation, and enterprise sales is rare. My track record spans every dimension BSI needs to launch and scale its AI Business Unit successfully.</p>
+    <div class="creds-grid reveal">
+      <div class="cred-card"><div class="cred-emoji">🏆</div><h4>Winner's Circle</h4><p>Top 3% globally at Clarivate. $8M+ closed business. Not a quota hitter — a quota architect who builds from zero.</p></div>
+      <div class="cred-card"><div class="cred-emoji">🔬</div><h4>Biotech Founder</h4><p>CEO of Aestar Therapeutics — pre-IND drug development in the most regulated environment on Earth: FDA-pathway pharma.</p></div>
+      <div class="cred-card"><div class="cred-emoji">🌐</div><h4>AI Platform Builder</h4><p>Built landmarq.ai and aestartx.com — live, functional AI tools demonstrating governance intelligence and regulatory-grade design.</p></div>
+      <div class="cred-card"><div class="cred-emoji">📊</div><h4>Economist Training</h4><p>BA Economics with Highest Honors, UIUC. Analytical rigor compliance buyers demand — delivered in an enterprise sales wrapper.</p></div>
+    </div>
+    <div class="timeline-strip reveal">
+      <div class="timeline-item"><div class="timeline-year">2024–PRESENT</div><div class="timeline-role">Sr. Associate, Deal Origination</div><div class="timeline-org">B. Woods & Company</div></div>
+      <div class="timeline-item"><div class="timeline-year">2023–PRESENT</div><div class="timeline-role">CEO & Founder</div><div class="timeline-org">Aestar Therapeutics</div></div>
+      <div class="timeline-item"><div class="timeline-year">2021–2023</div><div class="timeline-role">Senior Account Executive</div><div class="timeline-org">Clarivate — Winner's Circle</div></div>
+      <div class="timeline-item"><div class="timeline-year">2019–2021</div><div class="timeline-role">Account Executive</div><div class="timeline-org">The Economist Group — $3.5M NBD</div></div>
+      <div class="timeline-item"><div class="timeline-year">EARLIER</div><div class="timeline-role">Consultant</div><div class="timeline-org">Ernst & Young</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label reveal">Next Steps</p>
+    <h2 class="section-title reveal">Ready to build BSI's<br><em>AI market presence.</em></h2>
+    <p class="section-sub reveal">Let's discuss how I'll turn BSI's AI Business Unit into the definitive compliance partner for organizations navigating the EU AI Act.</p>
+    <div class="contact-links reveal">
+      <a href="https://aestartx.com" target="_blank" class="link-pill">↗ aestartx.com</a>
+      <a href="https://landmarq.ai" target="_blank" class="link-pill">↗ landmarq.ai</a>
+      <a href="mailto:tony@bsiai.app" class="link-pill">✉ tony@bsiai.app</a>
+      <a href="https://linkedin.com" target="_blank" class="link-pill">in LinkedIn</a>
+    </div>
+    <p class="footnote">bsiai.app · Built to demonstrate initiative, technical fluency, and market vision for the BSI AI Business Unit</p>
+  </div>
+</section>
+
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+(function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+document.querySelectorAll('a,button,select,input').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.style.transform='translate(-50%,-50%) scale(2.5)');el.addEventListener('mouseleave',()=>cursor.style.transform='translate(-50%,-50%) scale(1)');});
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Plan tabs
+function switchTab(idx){
+  document.querySelectorAll('.plan-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('.plan-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+}
+
+// Revenue display
+function updateRevDisplay(v){const n=parseInt(v);document.getElementById('revenueDisplay').textContent=n>=1000?`$${(n/1000).toFixed(1)}B`:`$${n}M`;}
+
+// Risk Calculator
+const riskData={
+  industry:{biometrics:{r:90,c:'HIGH RISK',l:'Prohibited / High-Risk (Annex III)'},autonomous:{r:85,c:'HIGH RISK',l:'High-Risk (Annex III — Transport)'},healthcare:{r:80,c:'HIGH RISK',l:'High-Risk (Medical Devices)'},manufacturing:{r:65,c:'HIGH RISK',l:'High-Risk (Safety-Critical Systems)'},hr:{r:70,c:'HIGH RISK',l:'High-Risk (Employment AI — Annex III)'},finance:{r:55,c:'MEDIUM RISK',l:'Limited Risk (GPAI / Credit Scoring)'},retail:{r:28,c:'LOWER RISK',l:'Minimal / Limited Risk'}},
+  usecase:{decision:20,monitoring:25,safety:30,prediction:10,generation:15,compliance:-10},
+  maturity:{none:20,partial:10,developing:0,advanced:-15}
+};
+function fmt(n){return n>=1000?`$${(n/1000).toFixed(1)}B`:`$${n.toFixed(1)}M`;}
+function calculateRisk(){
+  const ind=document.getElementById('industry').value,uc=document.getElementById('usecase').value,mat=document.getElementById('maturity').value,rev=parseInt(document.getElementById('revenue').value);
+  if(!ind||!uc||!mat){alert('Please complete all fields.');return;}
+  const score=Math.min(99,Math.max(10,riskData.industry[ind].r+(riskData.usecase[uc]||0)+(riskData.maturity[mat]||0)));
+  const maxFine=Math.max(35,rev*0.07),remediation=maxFine*(0.15+(score/100)*0.25),cert=Math.max(0.08,rev*0.0008),roi=Math.round((remediation-cert)/cert);
+  const color=score>=70?'#f87171':score>=45?'#fbbf24':'#34d399';
+  const action=score>=70?'Immediate BSI Assessment Required':score>=45?'Gap Assessment within 90 Days':'Proactive Certification Recommended';
+  document.getElementById('placeholder').style.display='none';
+  document.getElementById('resultsContent').style.display='block';
+  const rn=document.getElementById('riskNum');rn.textContent=score+'/100';rn.style.color=color;
+  const rl=document.getElementById('riskLabel');rl.textContent=riskData.industry[ind].c;rl.style.color=color;
+  const bar=document.getElementById('riskBarFill');bar.style.background=color;setTimeout(()=>{bar.style.width=score+'%';},50);
+  document.getElementById('mClass').textContent=riskData.industry[ind].l;
+  document.getElementById('mFine').textContent=fmt(maxFine)+' potential';
+  document.getElementById('mRemediation').textContent=fmt(remediation)+' reactive';
+  document.getElementById('mCert').textContent=fmt(cert)+' proactive';
+  document.getElementById('mROI').textContent=`${roi}× return on governance investment`;
+  document.getElementById('mAction').textContent=action;
+}
+
+// Tool Registry Data
+const tools=[
+  // BIOMETRICS
+  {cat:'bio',name:'Clearview AI',vendor:'Clearview AI, Inc.',catLabel:'Biometrics',catClass:'cat-bio',tier:'Prohibited',tierClass:'risk-prohibited',score:98,notes:'Mass facial recognition from public data without consent. Banned in EU, fined in AU, CA, UK, IT. GDPR violations confirmed by multiple DPAs. Incompatible with EU AI Act Art. 5.',flag:'Compliance Halt',flagClass:'flag-halt'},
+  {cat:'bio',name:'Amazon Rekognition',vendor:'Amazon Web Services',catLabel:'Biometrics / Vision',catClass:'cat-bio',tier:'High Risk',tierClass:'risk-high',score:88,notes:'Real-time biometric identification in public spaces. Demonstrated racial bias in independent audits (MIT Media Lab). Law enforcement/border control use triggers Annex III classification.',flag:'Cert Required',flagClass:'flag-cert'},
+  {cat:'bio',name:'Face++ (Megvii)',vendor:'Megvii Technology',catLabel:'Biometrics',catClass:'cat-bio',tier:'Prohibited',tierClass:'risk-prohibited',score:95,notes:'Social scoring and mass surveillance applications. US Department of Commerce Entity List designation. Incompatible with EU AI Act fundamental rights provisions.',flag:'Compliance Halt',flagClass:'flag-halt'},
+  {cat:'bio',name:'ID.me Biometric Auth',vendor:'ID.me, Inc.',catLabel:'Identity Verification',catClass:'cat-bio',tier:'High Risk',tierClass:'risk-high',score:75,notes:'Government benefit access gatekeeping via facial recognition. FTC scrutiny over data retention practices. Annex III classification for essential service access decisions. Mandatory human review required.',flag:'Cert Required',flagClass:'flag-cert'},
+  // LLMs
+  {cat:'llm',name:'ChatGPT / GPT-4o',vendor:'OpenAI',catLabel:'LLM / Generative',catClass:'cat-llm',tier:'GPAI — Medium',tierClass:'risk-medium',score:62,notes:'General Purpose AI under EU AI Act. High-systemic risk flag triggered (>10²⁵ FLOPs training compute). Requires transparency documentation, copyright compliance reporting, and incident notification obligations.',flag:'Gap Assessment',flagClass:'flag-assess'},
+  {cat:'llm',name:'Claude (Anthropic)',vendor:'Anthropic PBC',catLabel:'LLM / Generative',catClass:'cat-llm',tier:'GPAI — Medium',tierClass:'risk-medium',score:52,notes:'Constitutional AI framework and published Responsible Scaling Policy provide governance advantage over peers. GPAI classification still requires formal transparency documentation and third-party evaluation under EU AI Act.',flag:'Gap Assessment',flagClass:'flag-assess'},
+  {cat:'llm',name:'Gemini (Google DeepMind)',vendor:'Google / Alphabet',catLabel:'LLM / Generative',catClass:'cat-llm',tier:'GPAI — Medium',tierClass:'risk-medium',score:58,notes:'Deeply embedded in Google Workspace (2B+ users). Data privacy, cross-border transfer, and output reliability risks amplified by scale. GPAI systemic risk classification triggered. EU market transparency obligations apply.',flag:'Gap Assessment',flagClass:'flag-assess'},
+  {cat:'llm',name:'Microsoft Copilot 365',vendor:'Microsoft Corp.',catLabel:'LLM / Enterprise',catClass:'cat-llm',tier:'GPAI — Medium',tierClass:'risk-medium',score:56,notes:'Enterprise LLM with direct access to org-wide sensitive data. Microsoft has published EU AI Act compliance roadmap. Primary risk: misconfigured tenant permissions causing unauthorized data access — leading enterprise exposure vector.',flag:'Gap Assessment',flagClass:'flag-assess'},
+  {cat:'llm',name:'Meta Llama (Open Weight)',vendor:'Meta AI',catLabel:'LLM / Open Source',catClass:'cat-llm',tier:'High Risk (Deployment)',tierClass:'risk-high',score:72,notes:'Open weights model — risk profile is entirely deployment-dependent with no built-in guardrails. Enterprises that fine-tune become the "provider" under EU AI Act with full compliance obligations. Very high governance gap risk for deployers.',flag:'Cert Required',flagClass:'flag-cert'},
+  // DECISION AI
+  {cat:'decision',name:'FICO Score / UltraFICO',vendor:'Fair Isaac Corporation',catLabel:'Credit Decisioning',catClass:'cat-decision',tier:'High Risk',tierClass:'risk-high',score:78,notes:'AI used in credit, insurance, and employment decisions affecting individual rights. EU AI Act Annex III classification. Established demographic bias concerns across race, gender, and zip code lines.',flag:'Cert Required',flagClass:'flag-cert'},
+  {cat:'decision',name:'Palantir AIP',vendor:'Palantir Technologies',catLabel:'Decision Automation',catClass:'cat-decision',tier:'High Risk',tierClass:'risk-high',score:80,notes:'AI-driven government and military decision support platform. Critical infrastructure and law enforcement use cases trigger highest EU AI Act scrutiny. Significant transparency and auditability requirements apply.',flag:'Cert Required',flagClass:'flag-cert'},
+  {cat:'decision',name:'C3.ai Enterprise AI',vendor:'C3.ai, Inc.',catLabel:'Enterprise / Industrial AI',catClass:'cat-decision',tier:'Medium Risk',tierClass:'risk-medium',score:58,notes:'Predictive maintenance and supply chain optimization AI. Risk profile is heavily context-dependent. Energy sector and manufacturing safety-critical deployments require conformity assessment. General analytics use is lower risk.',flag:'Gap Assessment',flagClass:'flag-assess'},
+  {cat:'decision',name:'Epic Systems AI / Sepsis',vendor:'Epic Systems Corp.',catLabel:'Medical Decision AI',catClass:'cat-decision',tier:'High Risk',tierClass:'risk-high',score:82,notes:'AI clinical decision support for sepsis prediction and diagnostics. NEJM-published validation concerns around false positive rates in diverse populations. EU AI Act medical device classification intersects with MDR/IVDR obligations.',flag:'Cert Required',flagClass:'flag-cert'},
+  // HR
+  {cat:'hr',name:'HireVue',vendor:'HireVue, Inc.',catLabel:'HR / Recruitment',catClass:'cat-hr',tier:'High Risk',tierClass:'risk-high',score:82,notes:'AI video interview scoring uses facial expression and voice analysis. FTC settled complaint regarding algorithmic bias. EU AI Act Annex III employment classification. Facial analysis features require explicit conformity assessment before EU deployment.',flag:'Cert Required',flagClass:'flag-cert'},
+  {cat:'hr',name:'Pymetrics (Harver)',vendor:'Harver B.V.',catLabel:'HR / Recruitment',catClass:'cat-hr',tier:'High Risk',tierClass:'risk-high',score:74,notes:'Neuroscience-based game assessments for hiring decisions. Significant adverse impact concerns for disability groups. Requires transparency documentation and human oversight under EU AI Act employment provisions.',flag:'Cert Required',flagClass:'flag-cert'},
+  {cat:'hr',name:'Workday AI Skills',vendor:'Workday, Inc.',catLabel:'HR / Workforce AI',catClass:'cat-hr',tier:'Medium Risk',tierClass:'risk-medium',score:50,notes:'AI-powered skills inference and compensation benchmarking. Lower risk due to human-in-loop design and ongoing ISO 42001 alignment efforts. Employment classification still applies — gap assessment recommended before EU market use.',flag:'Gap Assessment',flagClass:'flag-assess'},
+  {cat:'hr',name:'Eightfold AI',vendor:'Eightfold AI, Inc.',catLabel:'HR / Talent AI',catClass:'cat-hr',tier:'High Risk',tierClass:'risk-high',score:76,notes:'AI talent intelligence platform for hiring and workforce planning. Deep inferential analysis of protected attributes from resume data. Annex III employment classification triggers conformity assessment requirement.',flag:'Cert Required',flagClass:'flag-cert'},
+  // AUTONOMOUS
+  {cat:'auto',name:'Tesla Autopilot / FSD',vendor:'Tesla, Inc.',catLabel:'Autonomous Vehicles',catClass:'cat-auto',tier:'High Risk',tierClass:'risk-high',score:85,notes:'Safety-critical AI in transportation with multiple active NHTSA investigations. EU AI Act requires Type Examination conformity assessment before market placement. Annex II product safety legislation overlap (Type Approval).',flag:'Cert Required',flagClass:'flag-cert'},
+  {cat:'auto',name:'Waymo Driver',vendor:'Waymo LLC (Alphabet)',catLabel:'Autonomous Vehicles',catClass:'cat-auto',tier:'High Risk',tierClass:'risk-high',score:78,notes:'Safety-critical autonomous driving system. Strongest safety documentation track record in AV sector. EU market access still requires formal Type Examination under AI Act and interaction with Annex II type approval framework.',flag:'Cert Required',flagClass:'flag-cert'},
+  {cat:'auto',name:'Boston Dynamics Spot AI',vendor:'Boston Dynamics',catLabel:'Autonomous Robotics',catClass:'cat-auto',tier:'High Risk',tierClass:'risk-high',score:76,notes:'Autonomous navigation in industrial and public environments. Law enforcement and defense deployment use cases trigger prohibited/high-risk EU AI Act provisions. Human oversight documentation mandatory for all EU deployments.',flag:'Cert Required',flagClass:'flag-cert'},
+  // COMPUTER VISION
+  {cat:'vision',name:'Google Vision AI',vendor:'Google Cloud',catLabel:'Computer Vision',catClass:'cat-vision',tier:'Medium Risk',tierClass:'risk-medium',score:48,notes:'General-purpose object detection and OCR. Risk escalates sharply when used for biometric identification or critical infrastructure monitoring. Use-case-level conformity review strongly recommended for enterprise deployments.',flag:'Gap Assessment',flagClass:'flag-assess'},
+  {cat:'vision',name:'AWS Panorama',vendor:'Amazon Web Services',catLabel:'Edge Computer Vision',catClass:'cat-vision',tier:'Medium Risk',tierClass:'risk-medium',score:55,notes:'Edge computer vision for manufacturing and retail surveillance. Risk classification driven by use case: safety system monitoring triggers Annex III; standard quality inspection does not. Deployment context documentation required.',flag:'Gap Assessment',flagClass:'flag-assess'},
+  // CODE GENERATION
+  {cat:'code',name:'GitHub Copilot',vendor:'GitHub / Microsoft',catLabel:'Code Generation',catClass:'cat-code',tier:'Low Risk',tierClass:'risk-low',score:28,notes:'Developer productivity AI with low EU AI Act direct risk exposure. Ongoing copyright litigation (training data) creates IP indemnification concerns for enterprise code. Best practice: maintain human code review protocols and copyright attribution policies.',flag:'Monitor',flagClass:'flag-monitor'},
+  {cat:'code',name:'Cursor AI',vendor:'Anysphere, Inc.',catLabel:'Code Generation / IDE',catClass:'cat-code',tier:'Low Risk',tierClass:'risk-low',score:22,notes:'AI-powered IDE with deep codebase context. Low direct regulatory risk but sensitive IP exposure risk if proprietary code is transmitted to third-party LLM backends. Data processing agreements and DPA review required for enterprise use.',flag:'Monitor',flagClass:'flag-monitor'},
+  {cat:'code',name:'Tabnine (On-Premise)',vendor:'Tabnine Ltd.',catLabel:'Code Generation',catClass:'cat-code',tier:'Low Risk',tierClass:'risk-low',score:15,notes:'On-premise deployment option eliminates data sovereignty risk that affects cloud-only competitors. Strongest enterprise data privacy posture in code generation category. Lowest risk profile for regulated-industry developers.',flag:'Monitor',flagClass:'flag-monitor'},
+];
+
+function scoreColor(s){return s>=80?'#f87171':s>=60?'#fb923c':s>=40?'#fbbf24':'#34d399';}
+
+function renderReg(filter){
+  const list=filter==='all'?tools:tools.filter(t=>t.cat===filter);
+  document.getElementById('registryBody').innerHTML=list.map(t=>`
+    <tr>
+      <td><div class="tool-name">${t.name}</div><div class="tool-vendor">${t.vendor}</div></td>
+      <td><span class="tool-cat ${t.catClass}">${t.catLabel}</span></td>
+      <td><span class="risk-badge ${t.tierClass}"><span class="risk-dot"></span>${t.tier}</span></td>
+      <td><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:${t.score}%;background:${scoreColor(t.score)}"></div></div><span class="score-num">${t.score}</span></div></td>
+      <td class="reg-notes">${t.notes}</td>
+      <td><span class="bsi-flag ${t.flagClass}">${t.flag}</span></td>
+    </tr>
+  `).join('');
+}
+
+function filterReg(cat,btn){
+  document.querySelectorAll('#registry .filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderReg(cat);
+}
+
+renderReg('all');
+
+// Case Studies filter
+function filterCS(sector,btn){
+  document.querySelectorAll('#casestudies .filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#csGrid .cs-card').forEach(c=>{
+    c.style.display=(sector==='all'||c.dataset.sector===sector)?'':'none';
+  });
+}
+</script>
+</body>
+</html>
