@@ -793,4 +793,24 @@ function renderReg(filter){
 }
 
 function filterReg(cat,btn){
-  document.querySelectorAll('#registry .filter-btn').
+  document.querySelectorAll('#registry .filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderReg(cat);
+}
+renderReg('all');
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Plan tabs
+function switchTab(idx){
+  document.querySelectorAll('.plan-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('.plan-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+}
+
+// Revenue display
+function updateRevDisplay(v){const n=parseInt(v);document.getElementById('revenueDisplay').textContent=n>=1000?`$${(n/1000).toFixed(1)}B`:`$${n}M`;}
+</script>
+</body>
+</html>
